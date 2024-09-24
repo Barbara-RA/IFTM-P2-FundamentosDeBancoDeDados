@@ -1,0 +1,29 @@
+#3
+#a
+select * from p.piloto
+from piloto p join compainha c on p.cod_cia=c.cod.cia
+where c.sigla='TAM' or c.sigla='TAP';
+
+#b
+select a.nome_aeroporto, v.hora
+from voo v join aeroporto A on v.aeroporto_destino=a.aeroporto_destino
+where codigo_voo='A200';
+
+#c
+select v.codigo_voo, v.data_voo, v.hora
+from voo v join aeroporto A on v.aeroporto_destino=a.aeroporto_destino
+where a.cidade='guarulhos';
+
+#d
+select v.aeroporto_destino, v.hora
+from voo v join aeroporto A on v.aeroporto_destino=a.aeroporto_destino join aeroporto a2 on v.aeroporto_origem=a2.aeroporto_origem
+where v.aeroporto_origem='Uberlândia' and v.hora>=12pm and v.hora>12am;
+
+#E
+select count(v.codigo_voo)
+from voo v join aeroporto A on v.aeroporto_destino=a.aeroporto_destino join escala E on v.codigo_voo=e.codigo_voo
+where a.aeroporto_destino='Uberlândia' and month(e.data_voo)>=5 and month(e.data_voo)<=6;
+
+#F
+select p.nome_piloto,c.sigla,v.codigo_voo, e.data_voo, a.aeroporto_destino,
+Piloto compainha voo

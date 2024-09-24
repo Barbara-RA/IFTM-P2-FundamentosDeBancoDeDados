@@ -1,0 +1,55 @@
+#A)
+create database VoeBem;
+Use VoeBem;
+create table Compainha(
+Cod_cia int primary key auto_increment,
+nome_comp varchar (30), 
+sigla varchar(5)
+);
+#B)
+
+create table Piloto(
+codigo_piloto int primary key auto_increment,
+nome_piloto varchar(50),
+salario numeric(9,2),
+gratificacao numeric(7,2),
+cod_cia int,
+pais varchar (15),
+foreign key (cod_cia) references Compainha(cod_cia)
+);
+
+create table Aeroporto(
+codigo_aeroporto varchar(3) primary key,
+nome_aeroporto varchar (100),
+cidade varchar (50),
+pais varchar (15)
+);
+
+create table Voo(
+codigo_voo varchar(6) primary key,
+aeroporto_origem varchar (3),
+aeroporto_destino varchar(3),
+hora time,
+foreign key (aeroporto_origem) references Aeroporto(codigo_aeroporto),
+foreign key (aeroporto_destino) references Aeroporto(codigo_aeroporto)
+);
+
+create table Escala(
+Codigo_voo varchar(6),
+data_voo date primary key,
+codigo_piloto int,
+aviao varchar(30),
+foreign key (Codigo_voo) references Voo(Codigo_voo),
+foreign key (codigo_piloto) references Piloto(codigo_piloto)
+);
+
+#C
+
+use VoeBem;
+insert piloto(email varchar30);
+
+
+Alter table	Aeroporto modify cidade  cidade_aeroporto;
+
+#D
+Alter table	Compainha modify nome_comp varchar(40);
